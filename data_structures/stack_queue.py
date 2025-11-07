@@ -75,10 +75,11 @@ def stack_demo():
 
 from collections import deque
 
-# FIFO of a queue for a custumer service 
+# FIFO of a queue for a customer service 
+# deque more efficient for removal from the beginning
 class CallCenterQueue: 
     def __init__(self):
-        self.queue = deque() #deque more effective for pop(0)
+        self.queue = deque() # Deque = Double-ended queue(add-remove both ends)
 
     # add costumer at the end
     def add_customer(self, name):
@@ -90,7 +91,7 @@ class CallCenterQueue:
         if self.is_empty():
             print("No costumers to serve")
             return None
-        served = self.queue.popleft()
+        served = self.queue.popleft() #remove 1st item from the list and return it
         print(f"Customer '{served}' has been served.")
         return served
     
@@ -100,7 +101,7 @@ class CallCenterQueue:
             print("Queue is empty")
             return None
         print(f"Next customer: {self.queue[0]}")
-        return self.queue[0]
+        return self.queue[0] #the first element of the list
     
     #show all costumers in the queue
     def display_queue(self):
