@@ -23,13 +23,13 @@ def week_temp():
     print("Corrected temperatutre", temperatures[2])
 
     #remove temperature
-    rem = temperatures.pop() #delete last element
-    print("Last day was removed", rem,)
+    remove= temperatures.pop() #delete last element
+    print("Last day was removed", remove)
 
     #add temperature
     temperatures.append(18.2)
     print("One more day added:", temperatures)
 
 if __name__ == "__main__":
-    week_temp()
+    print("Run tests/test_arrays_lists.py to see the demo.")
     
