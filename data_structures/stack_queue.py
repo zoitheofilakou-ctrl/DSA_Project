@@ -115,32 +115,5 @@ class CallCenterQueue:
         return len(self.queue) == 0
     
 
-# ------------------- Demo ----------------------------------------
-def queue_demo():
-
-    center = CallCenterQueue()
-
-    #add customers
-    center.add_customer("George")
-    center.add_customer("Elisavet")
-    center.add_customer("Nikos")
-    center.add_customer("Irini")
-
-    #display queue
-    center.display_queue()
-
-    #serving customer
-    center.current_customer()
-
-    #next customer
-    center.next_customer()
-
-    #display after serving
-    center.display_queue()
-
-#----------------Main run -----------------------------------
-if __name__== "__main__":
-        stack_demo()
-        queue_demo()
 
 

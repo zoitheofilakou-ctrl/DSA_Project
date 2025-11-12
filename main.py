@@ -156,7 +156,7 @@ def main():
     demo_sorting()
     demo_searching()
     demo_tree_traversal()
-    print("\n✅ All demos completed successfully!")
+    print("\nAll demos completed successfully!")
 
 
 if __name__ == "__main__":
