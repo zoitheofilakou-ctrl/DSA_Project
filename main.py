@@ -55,12 +55,34 @@ def demo_arrays():
 
 
 def demo_linked_list():
-    print("\n--- Linked List Demo ---")
-    ll = LinkedList()
-    ll.add(5)
-    ll.add(15)
-    ll.add(25)
-    print("Linked List:", ll.display())
+    print("\n=== Linked List Demo: Songs Playlist ===")
+
+    # Create an empty linked list
+    playlist = LinkedList()
+    print("Step 1: Empty playlist created.")
+    playlist.display()
+
+    # Add songs
+    print("\nStep 2: Adding songs...")
+    playlist.add("Imagine")
+    playlist.add("Black Sabbath")
+    playlist.add("Hotel California")
+    playlist.display()
+
+    # Remove the first song
+    print("\nStep 3: Removing the first song...")
+    playlist.remove_first()
+    playlist.display()
+
+    # 4️Add a new song
+    print("\nStep 4: Adding a new song...")
+    playlist.add("Let it be")
+    playlist.display()
+
+    print("\nLinked List demo completed successfully!\n")
+
+
+
 
 
 def demo_stack_queue():
