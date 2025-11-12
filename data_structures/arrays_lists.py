@@ -1,35 +1,41 @@
-### Record of weekly temperatures
+# arrays_lists.py
+# Dynamic Array implementation for storing and processing elements
+# Author: Zoi Theofilakou | Turku University of Applied Sciences | Fall 2025
 
-def week_temp():
+class DynamicArray:
+    """A simple implementation of a dynamic array using Python list."""
 
-    #create a list with 7 temperatures
-    temperatures = [12.5, 14.2, 15.8, 13.9, 11.6, 10.2, 12.0]
-    print("Temperatures of the week",temperatures)
+    def __init__(self):
+        self.temperatures = [12.5, 14.2, 15.8, 13.9, 11.6, 10.2, 12.0]
 
-    #find mean
-    mean_temp = sum(temperatures)/len(temperatures)
-    print("Average weekly temperature:", round(mean_temp))
+    def display(self):
+        """Display all elements."""
+        return self.temperatures
 
-    #find a specific element-day = Wedenesday
-    print("Wedensday's temperature is :", temperatures[3])
+    def mean(self):
+        """Return the average temperature."""
+        return sum(self.temperatures) / len(self.temperatures)
 
+    def get(self, index):
+        """Return element at given index."""
+        return self.temperatures[index]
 
-    #display min and max
-    print("Highest temperature:", max(temperatures))
-    print("Lowest temperature:", min(temperatures))
+    def update(self, index, new_value):
+        """Update a specific temperature."""
+        self.temperatures[index] = new_value
 
-    # replace wrong temperature
-    temperatures[2] = 15
-    print("Corrected temperatutre", temperatures[2])
+    def remove_last(self):
+        """Remove and return last element."""
+        return self.temperatures.pop()
 
-    #remove temperature
-    remove= temperatures.pop() #delete last element
-    print("Last day was removed", remove)
+    def append(self, value):
+        """Add a new temperature."""
+        self.temperatures.append(value)
 
-    #add temperature
-    temperatures.append(18.2)
-    print("One more day added:", temperatures)
+    def get_all(self):
+        """Return entire list."""
+        return self.temperatures
+
 
 if __name__ == "__main__":
     print("Run tests/test_arrays_lists.py to see the demo.")
-    
