@@ -17,19 +17,19 @@ Implementation Summary
 
 The DynamicArray class includes several key operations:
 
-display() – returns all stored elements
+- display() – returns all stored elements
 
-mean() – average temperature calculation
+- mean() – average temperature calculation
 
-get(index) – returns the element at a specific index
+- get(index) – returns the element at a specific index
 
-update(index, new_value) – updates a temperature at the given position
+- update(index, new_value) – updates a temperature at the given position
 
-remove_last() – removes and returns the last element
+- remove_last() – removes and returns the last element
 
-append(value) – adds a new temperature at the end
+- append(value) – adds a new temperature at the end
 
-get_all() – returns the complete list of elements
+- get_all() – returns the complete list of elements
 
 Most of these operations have constant time complexity because they directly access or modify list elements.
 Only operations that need to examine all elements, such as calculating the mean, have linear complexity.
@@ -38,13 +38,12 @@ Testing and Validation
 
 The pytest framework was used in the file tests/testarraylists.py to test all of the methods of the class.
 
-The tests confirm that:
+The pytest framework purpose is to verify the logical correctness of the program rather than its printed output.
+Assertions (assert statements) are used to check whether the functions return the correct results internally.
 
-The array initializes correctly and computes the mean accurately.
+When running tests, pytest simply reports whether each test PASSED or FAILED, without showing the actual printed values (for example, the temperatures).
+This ensures that testing remains automatic, consistent, and focused on the correctness of the code logic rather than its output format.
 
-Elements can be added, updated, and removed as expected.
-
-Data types and returned values are consistent.
 
 Every test was successful following the deletion of a duplicate file as well as clearing the cache directories (pycache).
 
