@@ -1,121 +1,109 @@
-Overview of Tree Traversal
+### Tree Traversal Algorithms Analysis
 
-A tree is made up of nodes, where each node can have a left and right child.
-Traversal algorithms define the order in which these nodes are visited.
-Each traversal visits every node exactly once, but the order of visiting differs depending on the goal.
+**Algorithms:** In-order Traversal, Pre-order Traversal, Post-order Traversal  
+**Scenario:** File System Organization, Sorted Data Extraction, and Company Hierarchies  
+**Source File:** algorithms/traversal.py  
 
-The three main types are:
+---
 
-In-order Traversal – visits the left child, then the root, then the right child.
+### Description
 
-Pre-order Traversal – visits the root first, then the left and right children.
+This module presents three classical **Depth-First Search (DFS)** traversal algorithms for binary trees — In-order, Pre-order, and Post-order Traversal.  
+Each algorithm visits every node in a different sequence and serves a specific purpose in data organization and processing.  
+They are fundamental in understanding how tree structures are explored and are widely used in databases, compilers, and hierarchical data management.
 
-Post-order Traversal – visits the left and right children first, then the root.
+Each algorithm is demonstrated through both generic and real-world examples:
+- **In-order Traversal:** retrieves sorted data from a Binary Search Tree.  
+- **Pre-order Traversal:** represents how a file system or directory structure is traversed.  
+- **Post-order Traversal:** models hierarchical operations like processing employees before their managers.
 
-1. In-order Traversal
+All three algorithms visit every node exactly once, achieving **O(n)** time complexity.
 
-Description
+---
 
-In-order traversal visits the nodes of a binary tree in sorted order when the tree is a Binary Search Tree (BST).
-It first explores the left subtree, then the current node, and finally the right subtree.
+### Implementation Summary
 
-Time Complexity
+- **Node** – defines a simple tree structure containing `data`, `left`, and `right` references.  
+- **inorder_traversal(node)** – visits the left subtree first, then the current node, and finally the right subtree.  
+  Used for retrieving sorted data from a Binary Search Tree.  
+- **preorder_traversal(node)** – visits the current node first, then explores its left and right children.  
+  Commonly used for copying or printing the full structure of a tree (e.g., folder hierarchy).  
+- **postorder_traversal(node)** – visits both subtrees before the current node.  
+  Used for bottom-up operations like deleting nodes, cleanup, or hierarchical aggregation.
 
-Best case: O(n)
+Each traversal returns a list of visited nodes, which simplifies testing and integration with other data structures.
 
-Average case: O(n)
+---
 
-Worst case: O(n)
+### Testing and Validation
 
-The algorithm must visit every node once, so its time complexity is always linear.
+The module was validated using **pytest** in `tests/test_traversal.py`.  
+A fixed binary tree was created for all test cases:
 
-Space Complexity
+    A
+   / \
+  B   C
+ / \
+D   E
 
-O(h), where h is the height of the tree.
+Three test functions (`test_inorder_traversal`, `test_preorder_traversal`, `test_postorder_traversal`) verified that each algorithm produced the correct visiting order.  
+All tests passed successfully, confirming that recursive traversal logic and node sequencing were implemented correctly.
 
-In a balanced tree, the height is approximately log n, so the space complexity becomes O(log n).
-In the worst case (a completely unbalanced tree), it can reach O(n).
+---
 
-Comment
+### Expected Traversal Outputs
 
-In-order traversal is often used when data must be retrieved in ascending order,
-such as printing or exporting sorted records from a binary search tree.
+| Traversal Type | Visiting Order | Description |
+|----------------|----------------|--------------|
+| **In-order** | D → B → E → A → C | Returns nodes in sorted order (used in Binary Search Trees). |
+| **Pre-order** | A → B → D → E → C | Visits the root first — useful for displaying or copying tree structures. |
+| **Post-order** | D → E → B → C → A | Visits children before parents — ideal for deletions or hierarchical calculations. |
 
-2. Pre-order Traversal
+These outputs were manually verified during early debugging and matched the expected theoretical orders.
 
-Description
+---
 
-Pre-order traversal starts from the root node and processes it before visiting its children.
-It then recursively visits the left subtree followed by the right subtree.
+### Time and Space Complexity
 
-Time Complexity
+**In-order Traversal:**  
+- **Time:** O(n) — every node is visited exactly once.  
+- **Space:** O(h), where *h* is the height of the tree (recursion stack).  
 
-Best case: O(n)
+**Pre-order Traversal:**  
+- **Time:** O(n) — visits all nodes once.  
+- **Space:** O(h) — recursive depth proportional to tree height.  
 
-Average case: O(n)
+**Post-order Traversal:**  
+- **Time:** O(n) — processes all nodes exactly once.  
+- **Space:** O(h) — same recursive depth limitation.
 
-Worst case: O(n)
+All traversal algorithms have identical asymptotic performance, differing only in visiting order.
 
-Each node is processed once, so the time complexity is linear.
+---
 
-Space Complexity
+### Debugging Notes
 
-O(h), where h is the height of the tree.
+During initial testing, the file `tests/test_traversal.py` contained additional print-based demo code that prevented **pytest** from discovering the test functions, causing the message *“collected 0 items”*.  
+To fix this issue:
+1. The demo and visualization code were moved to `main.py` under the `demo_tree_traversal()` function.  
+2. The test file was cleaned to include only the three `test_` functions with `assert` statements.  
+3. Both `/algorithms` and `/tests` directories were updated with empty `__init__.py` files to ensure proper package imports.  
+4. Test discovery was verified with `pytest --collect-only` before rerunning the full suite.
 
-Comment
+After these adjustments, pytest successfully detected and executed all tests:
 
-Pre-order traversal is useful when we want to copy a tree or save its structure.
-It is also used in applications such as creating prefix expressions or generating hierarchical data formats.
 
-3. Post-order Traversal
+This confirmed that traversal logic, import paths, and testing structure were all functioning correctly.
 
-Description
+---
 
-Post-order traversal processes all child nodes before visiting the parent node.
-It first visits the left subtree, then the right subtree, and finally the root node.
+### Conclusion
 
-Time Complexity
+The **Tree Traversal Algorithms** module demonstrates how different traversal orders produce distinct insights from the same binary tree:
 
-Best case: O(n)
+- **In-order Traversal** retrieves data in sorted order — critical for binary search trees and databases.  
+- **Pre-order Traversal** enables the full reconstruction or visualization of a hierarchical structure.  
+- **Post-order Traversal** supports bottom-up processing, used in hierarchical deletions, expression evaluation, and dependency analysis.  
 
-Average case: O(n)
-
-Worst case: O(n)
-
-Like the other traversal methods, it visits every node once.
-
-Space Complexity
-
-O(h), where h is the height of the tree.
-
-Comment
-
-Post-order traversal is commonly used when deleting or freeing nodes in memory,
-because it ensures that child nodes are handled before their parent.
-It is also useful for evaluating mathematical expressions stored in trees.
-
-Comparison of Traversal Methods
-
-All traversal methods have the same time complexity, O(n), because each node is visited once.
-Their main difference lies in the order of visiting and the purpose of use.
-
-In-order traversal is best for retrieving data in sorted order.
-
-Pre-order traversal is ideal for copying or serializing tree structures.
-
-Post-order traversal is best for tasks that require processing children before parents, such as cleanup or evaluation.
-
-The space complexity depends on the depth of the tree.
-For balanced trees, the recursive stack remains shallow (O(log n)),
-but for skewed trees, the recursion can reach O(n).
-
-Overall Conclusion
-
-Tree traversal algorithms are efficient because they visit each node exactly once,
-making their time complexity linear in all cases.
-The amount of memory required depends on how deep the recursion goes,
-but in practice, they perform very well for balanced trees.
-
-Each traversal type is suited to a specific use case:
-In-order for sorted output, Pre-order for copying or visualization, and Post-order for deletion or evaluation.
-Together, these methods form the foundation for most tree-based operations in computer science.
+All algorithms share the same linear complexity and provide the foundation for more advanced tree operations such as search, balancing, and expression parsing.  
+This module completes the **Tree Algorithms section** of the DSA Project, emphasizing how traversal order directly determines how information is extracted and processed from hierarchical data.

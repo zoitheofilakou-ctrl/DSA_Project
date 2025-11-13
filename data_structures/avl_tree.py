@@ -100,28 +100,3 @@ def inorder(root):
         print(f"{root.student_id} - {root.name}")
         inorder(root.right)
 
-
-# ----------------------------Example Usage -----------------------------------------
-
-root = None
-
-students = [
-    (5, "Maria"),
-    (3, "Nikos"),
-    (8, "Eleni"),
-    (2, "Anna"),
-    (4, "Kostas"),
-]
-
-for sid, name in students:
-    root = insert(root, sid, name)
-
-print("List of students sorted by ID:")
-inorder(root)
-
-print("\nSearch student with ID 4:")
-result = search(root, 4)
-if result:
-    print("Found:", result)
-else:
-    print("No student with this ID")

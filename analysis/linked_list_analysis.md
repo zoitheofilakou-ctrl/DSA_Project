@@ -1,96 +1,65 @@
-## Linked List Analysis
+### Linked List Analysis
 
-Data Structure: Linked List
-Scenario: Music Playlist
-Source File: data_structures/linked_list.py
+**Data Structure:** Linked List  
+**Scenario:** Music Playlist  
+**Source File:** data_structures/linked_list.py  
+
+---
 
 ### Description
 
-The Linked List is a dynamic linear data structure that links elements by using pointers instead of storing them in continuous memory locations.
-Those elements are named nodes, each one is composed of two parts — the data (a song title) and a pointer to the next node.
+A Linked List is a linear data structure where each element (node) stores data and a reference to the next node instead of being placed in consecutive memory locations.  
+This design allows the structure to grow or shrink dynamically without needing to resize existing data.  
+In this project, the Linked List models a music playlist: new songs can be added at the end, the first song can be removed when played, and the full list can be displayed in the order songs were added.  
+It demonstrates how pointer-based data structures manage changing datasets more flexibly than arrays.
 
-This design allows the Linked List to expand or shrink easily, without having to move or resize existing elements in memory.
-It is useful in situations where the number of elements changes frequently, such as playlists, queues, or undo/redo operations.
-
-In this project, the Linked List is a music playlist, where:
-
-new songs can be added to the end of the list,
-
-the first song can be removed when played or skipped,
-
-and the user can display all songs in the order they were added.
+---
 
 ### Implementation Summary
 
-The implementation consists of two main classes:
+The implementation contains two main classes:  
 
-**Node** – defines the basic element of the list. It contains the data (song title) and a pointer to the next node.
+- **Node** – represents a single song, storing its title and a pointer to the next song.  
+- **LinkedList** – manages the entire playlist through the `head` reference, which always points to the first node.  
 
-**LinkedList** – manages the entire playlist through a single reference, called head, which always points to the first node.
+Core operations include:  
+- `add(data)` – adds a new song at the end of the list.  
+- `remove_first()` – removes the first song by moving the head pointer to the next node.  
+- `display()` – prints all songs in the current playlist order.  
 
-The LinkedList class includes the operations below:
+These operations are manually implemented to demonstrate how linked nodes connect dynamically without using Python’s built-in list type.
 
-- add(data) – adds a new song at the end of the list.
-
-- remove_first() – removes the first song by moving the head pointer to the next node.
-
-- display() – prints all songs sequentially from the first to the last.
-
-All operations are implemented manually without using Python’s built-in list type, showing how pointer-based structures work in practice.
+---
 
 ### Testing and Validation
 
-Testing was carried out using the pytest framework in the file tests/test_linked_list.py.
-Each test checks the logical correctness of the linked list operations rather than its printed output.
-Assertions (assert statements) are used to verify that the list behaves as expected after each operation.
+The Linked List was tested using **pytest** in `tests/test_linked_list.py`.  
+Tests verified that adding multiple songs correctly linked nodes, removing the first node updated the head, and operations on an empty list did not cause errors.  
+All tests passed successfully, confirming correct logic and stability across typical and edge cases.
 
-The following scenarios were tested:
-
-- Adding multiple songs links the nodes in the correct order.
-
-- Removing the first song correctly updates the head pointer.
-
-- Removing from an empty list does not raise an error.
-
-- Adding a song after removal works correctly.
-
-All tests passed successfully, confirming that the structure operates correctly in all normal and boundary cases.
-
-### Execution
-
-The Linked List demo can be executed through the main.py file, which contains the demo_linked_list() function.
-Running:
-
-python main.py
-
-
-demonstrates the structure’s main functionalities (create, add, remove, and display).
-This allows users to observe the changes step-by-step directly in the terminal.
+---
 
 ### Time and Space Complexity
 
-Adding a new node at the end of the list requires O(n) time, since the algorithm must traverse all existing nodes to reach the last one.
-Removing the first node takes O(1) time, as only the head pointer changes.
-Displaying all nodes requires O(n) time because every node must be visited once.
+- **Add (end):** O(n) – must traverse all nodes to reach the end  
+- **Remove (first):** O(1) – updates the head pointer only  
+- **Display:** O(n) – visits each node once  
+- **Space:** O(n) – one node per song  
 
-Each operation requires constant extra space O(1), except for the total number of nodes, which occupies O(n) memory overall due to the storage of pointers.
+The structure provides predictable linear space usage and quick insertions or deletions compared to arrays.
 
-In summary, Linked Lists trade fast element access for flexibility in insertion and deletion.
-They are slower for direct access compared to arrays but more efficient when elements are frequently added or removed.
+---
 
 ### Debugging Notes
 
-During testing, a few small issues were encountered and resolved:
+Minor path errors occurred when running pytest inside the `tests/` directory.  
+These were fixed by running tests from the project root to ensure proper imports.  
+No logical issues were found after final revisions.
 
-
-- ModuleNotFoundError: occurred when pytest was executed from inside the tests/ folder. Running it from the project root solved the problem.
-
-- Terminal freeze: appeared during unrelated tree traversal testing and was fixed by terminating the process with Ctrl + C.
+---
 
 ### Conclusion
 
-The Linked List provides a flexible and dynamic approach for managing data collections whose size frequently changes.
-Although it offers slower element access compared to arrays, it allows fast and efficient insertion or deletion operations.
-
-This module completes the second stage of the Data Structures and Algorithms project, demonstrating the same development process followed in the ArrayList module:
-implementation, testing, debugging, validation, and integration into the main program.
+The Linked List provides a simple yet powerful model for managing collections whose size changes frequently.  
+Although slower than arrays for random access, it offers efficient insertion and deletion operations.  
+This module continues the same development process as previous ones — implementation, testing, debugging, and integration — while introducing pointer-based dynamic memory management.

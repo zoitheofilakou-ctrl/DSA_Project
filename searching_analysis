@@ -1,0 +1,74 @@
+### Searching Algorithms Analysis
+
+**Algorithms:** Linear Search, Binary Search  
+**Scenario:** Movie Finder and Student Record Lookup  
+**Source File:** algorithms/searching.py  
+
+---
+
+### Description
+
+This module introduces two fundamental algorithms used to locate specific elements within a collection: **Linear Search** and **Binary Search**.  
+Each algorithm represents a different strategy for data lookup, depending on whether the list is sorted.
+
+- **Linear Search** scans each element sequentially until the target value is found.  
+- **Binary Search** operates on a sorted list, repeatedly dividing the search range in half for faster lookup.
+
+In this project, Linear Search models finding a movie title in an **unsorted list**, while Binary Search models locating a student ID in a **sorted database**.
+
+---
+
+### Implementation Summary
+
+The implementation includes two independent functions:
+
+- **linear_search(arr, target)** – iterates through each element; returns the index of the target if found, otherwise `-1`. Works on **any list**, sorted or not.  
+- **binary_search(arr, target)** – searches for a target in a **sorted list** by repeatedly checking the middle element and adjusting the search boundaries. Returns the index if found, or `-1` if not.
+
+Both algorithms include print statements for step-by-step output, making the search process transparent during demonstrations.
+
+---
+
+### Testing and Validation
+
+Both algorithms were verified using **pytest** in `tests/test_searching.py`.  
+Test cases covered:
+
+- Regular searches (target present or absent)  
+- Edge cases such as **empty lists**, **first/last element**, and **unsorted vs. sorted input**  
+
+All tests passed successfully, confirming the algorithms’ correctness and their proper behavior across edge conditions.
+
+---
+
+### Time and Space Complexity
+
+**Linear Search:**  
+- **Best case:** O(1) – target is the first element.  
+- **Average/Worst case:** O(n) – every element must be checked.  
+- **Space:** O(1) – no additional memory used.
+
+**Binary Search:**  
+- **Best case:** O(1) – target found at the first middle check.  
+- **Average/Worst case:** O(log n) – the list is halved at each step.  
+- **Space:** O(1) for iterative implementation (O(log n) for recursive).  
+
+Binary Search offers exponential performance improvement over Linear Search but requires sorted input.
+
+---
+
+### Debugging Notes
+
+Early test runs included manual print outputs to confirm correct index positions and verify messages.  
+The main challenge was ensuring Binary Search was applied only to sorted lists; once validated, both functions worked consistently.  
+Import paths were checked to ensure `pytest` could locate `algorithms/searching.py` correctly from the project root.
+
+---
+
+### Conclusion
+
+The Searching module demonstrates the difference between **brute-force** and **optimized** lookup strategies.  
+While **Linear Search** is universal and simple, **Binary Search** provides much faster performance on sorted datasets.  
+Together, they form the foundation of many advanced search techniques used in databases, indexing systems, and data-driven applications.
+
+This module continues the same DSA project workflow — implementation, testing, demonstration, and analysis — while emphasizing how **data organization directly affects algorithmic efficiency**.

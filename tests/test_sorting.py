@@ -1,32 +1,37 @@
+import pytest
 from algorithms.sorting import bubble_sort, insertion_sort, merge_sort
 
-print("\n==============================")
-print("BUBBLE SORT - Sorting Grades")
-print("==============================")
-student_grades = [56, 87, 93, 45, 58, 76, 38]
-print("Before:", student_grades)
-print("After :", bubble_sort(student_grades))
+
+def test_bubble_sort_basic():
+    data = [5, 3, 8, 4, 2]
+    result = bubble_sort(data.copy())
+    assert result == sorted(data)
 
 
-print("\n==============================")
-print("INSERTION SORT - Organizing Photos by Date")
-print("==============================")
-photo_dates = [5, 8, 3, 10, 6]
-print("Before:", photo_dates)
-print("After :", insertion_sort(photo_dates))
+def test_insertion_sort_basic():
+    data = [12, 11, 13, 5, 6]
+    result = insertion_sort(data.copy())
+    assert result == sorted(data)
 
 
-print("\n==============================")
-print("MERGE SORT – Organizing Songs by Year")
-print("==============================")
-songs = [
-    ("Thriller", 1982),
-    ("Back in Black", 1980),
-    ("Hybrid Theory", 2000),
-    ("Nevermind", 1991),
-    ("The Eminem Show", 2002),
-    ("21", 2011),
-]
-release_years = [song[1] for song in songs]
-print("Before:", release_years)
-print("After :", merge_sort(release_years))
+def test_merge_sort_basic():
+    data = [38, 27, 43, 3, 9, 82, 10]
+    result = merge_sort(data.copy())
+    assert result == sorted(data)
+
+
+def test_sorted_input_remains_same():
+    """Ensure that sorted input stays unchanged."""
+    data = [1, 2, 3, 4, 5]
+    assert bubble_sort(data.copy()) == data
+    assert insertion_sort(data.copy()) == data
+    assert merge_sort(data.copy()) == data
+
+
+def test_reverse_input_sorts_correctly():
+    """Ensure algorithms can handle reverse order lists."""
+    data = [5, 4, 3, 2, 1]
+    expected = [1, 2, 3, 4, 5]
+    assert bubble_sort(data.copy()) == expected
+    assert insertion_sort(data.copy()) == expected
+    assert merge_sort(data.copy()) == expected
