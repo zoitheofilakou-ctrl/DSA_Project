@@ -11,8 +11,8 @@ Each algorithm visits all nodes exactly once → O(n) time complexity.
 
 class Node:
     """Simple Node structure for a Binary Tree."""
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, value):
+        self.data = value
         self.left = None
         self.right = None
 
@@ -23,7 +23,8 @@ def inorder_traversal(node):
     result = []  # Start with an empty list
     if node:
         result += inorder_traversal(node.left) # Visit left child first
-        result.append(node.data)  # Then visit the root
+        result.append(node.value if hasattr(node, "value") else node.data)
+  # Then visit the root
         result += inorder_traversal(node.right)  # Finally visit right child
     return result
 
@@ -33,7 +34,7 @@ def preorder_traversal(node):
     """Pre-order traversal (Root → Left → Right)."""
     result = []
     if node:
-        result.append(node.data)
+        result.append(node.value if hasattr(node, "value") else node.data)
         result += preorder_traversal(node.left)
         result += preorder_traversal(node.right)
     return result
@@ -46,5 +47,5 @@ def postorder_traversal(node):
     if node:
         result += postorder_traversal(node.left)
         result += postorder_traversal(node.right)
-        result.append(node.data)
+        result.append(node.value if hasattr(node, "value") else node.data)
     return result
